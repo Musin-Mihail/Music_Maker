@@ -5,10 +5,11 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public Rigidbody Body;
-    public GameObject Do;
+    public GameObject Marker;
     Vector3 target;
-    int layerMask = 1 << 6;
+    int layerMask = 1 << 6; //Plane
     RaycastHit hit;
+    RaycastHit hit2;
     void Start()
     {
         Body = GetComponent<Rigidbody>();
@@ -47,25 +48,29 @@ public class Move : MonoBehaviour
         {
             Body.velocity = new Vector3(0,0,0);
         }
-        float rotationY = Input.GetAxis("Mouse X") * 10;//Позиция мыши по X
-        float rotationX = Input.GetAxis("Mouse Y") * 10;//Позиция мыши по Y
+
+        float rotationY = Input.GetAxis("Mouse X") * 5;//Позиция мыши по X
+        float rotationX = Input.GetAxis("Mouse Y") * 5;//Позиция мыши по Y
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0.0f);//Запрет поворота по Z
         transform.Rotate(0, rotationY, 0);// поворот по горизонтали
         transform.Rotate(-rotationX, 0, 0);// поворот по вертикали
-        // target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask);
+
         if(Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             target = new Vector3(hit.point.x, 0.5f ,hit.point.z);
-            Do.transform.position = target;
+            Marker.transform.position = target;
         }
         else
         {
-            Do.transform.position = new Vector3(0,0,-30);
+            Marker.transform.position = new Vector3(0,0,-30);
         }
-        
-        // Debug.Log(hit.point);
-        // Debug.DrawRay(transform.position, transform.forward*20,Color.green,0.5f);
-        // Debug.Log(hit.collider.name);
+
+        // if (Global.StatusBuild == 2)
+        // {
+        //     if(Physics.Raycast(transform.position, transform.forward, out hit2, Mathf.Infinity, layerMask2))
+        //     {
+        //         hit2.collider.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+        //     }
+        // }
     }
 }

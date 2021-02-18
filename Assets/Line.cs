@@ -17,14 +17,12 @@ public class Line : MonoBehaviour
         {
             if(Go == 0)
             {
-                Debug.Log("Start");
                 GetComponent<MeshRenderer>().enabled = true;
                 GetComponent<Collider>().enabled = true;
                 Go = 1;
             }
             else
             {
-                Debug.Log("Stop");
                 Go = 0;
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<Collider>().enabled = false;
