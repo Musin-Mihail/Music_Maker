@@ -46,7 +46,7 @@ public class Move : MonoBehaviour
         }
         else
         {
-            Body.velocity = new Vector3(0,0,0);
+            Body.linearVelocity = new Vector3(0,0,0);
         }
 
         float rotationY = Input.GetAxis("Mouse X") * 5;//Позиция мыши по X

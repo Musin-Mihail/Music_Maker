@@ -27,12 +27,12 @@ public class Line : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<Collider>().enabled = false;
                 transform.position = new Vector3(10,0.6f,0);
-                Body.velocity = new Vector3(0,0,0);
+                Body.linearVelocity = new Vector3(0,0,0);
             } 
         }
         if (Go == 1)
         {
-            Body.velocity = new Vector3(0,0,20);
+            Body.linearVelocity = new Vector3(0,0,20);
         }
         if (transform.position.z > 100)
         {
@@ -40,7 +40,7 @@ public class Line : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
             transform.position = new Vector3(10,0.6f,0);
-            Body.velocity = new Vector3(0,0,0);
+            Body.linearVelocity = new Vector3(0,0,0);
         }
 
     }
